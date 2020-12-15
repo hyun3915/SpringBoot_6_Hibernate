@@ -21,7 +21,7 @@
 	
 	<h3>Files</h3>
 	
-	<c:forEach items="${vo.files}" var="file">
+	<c:forEach items="${vo.noticeFileVOs}" var="file">
 		<p><a href="noticeFileDown?fnum=${file.fnum}">${file.oriName}</a></p>
 	</c:forEach>
 	
