@@ -54,7 +54,7 @@
   		<td>Hit</td>
   	</tr>
   	
-  	<c:forEach items="${list}" var="vo">
+  	<c:forEach items="${page.content}" var="vo">
   		<tr>
   			<td>${vo.num}</td>
   			<td><a href="${board}Select?num=${vo.num}">${vo.title}</a></td>
@@ -67,17 +67,7 @@
   </table>
   
   <!-- Page -->
-	<ul class="pagination">
-		<c:if test="${pager.before}">
-			<li><a href="#" class="list" title="${pager.startNum-1}">이전</a></li>
-		</c:if>
-		<c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
-			<li><a href="#" class="list" title="${i}">${i}</a></li>
-		</c:forEach>
-		<c:if test="${pager.after}">
-			<li><a href="#" class="list" title="${pager.lastNum+1}">다음</a></li>
-		</c:if>
-	</ul>
+
   
   <!-- Write 버튼 생성 클릭 -->
   <button id="btn">Write</button>		<!-- Form태그 내에서는 submit event가 실행 -->

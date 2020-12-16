@@ -9,6 +9,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import com.sub.sb6.board.qna.QnaVO;
+
 @SpringBootTest
 class NoticeRepositoryTest {
 	
@@ -21,7 +23,21 @@ class NoticeRepositoryTest {
 	
 	@Test
 	void test() throws Exception{
-		this.selectTest1();
+		this.saveTest2();
+	}
+	
+	private void saveTest2() {
+		List<NoticeVO> ar = new ArrayList<>();
+		for(int i=0; i<100;i++) {
+			NoticeVO noticeVO = new NoticeVO();
+			noticeVO.setTitle("title"+i);
+			noticeVO.setWriter("writer"+i);
+			noticeVO.setContents("contents"+1);
+			ar.add(noticeVO);
+		}
+		
+		noticeRepository.saveAll(ar);
+		System.out.println("finish");
 	}
 	
 	private void selectTest1() {
