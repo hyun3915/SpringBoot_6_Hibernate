@@ -27,6 +27,8 @@ class QnaRepositoryTest {
 		listTest();
 	}
 	
+	
+	
 	private void listTest() {
 		//일정한 갯수, 정렬방식
 		//select * from qna order by num desc limit 0, 10;

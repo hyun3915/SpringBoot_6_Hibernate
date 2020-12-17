@@ -67,7 +67,32 @@
   </table>
   
   <!-- Page -->
-
+  <div>
+  
+  <c:if test="${pager.previous}">
+  	<a href="${board}List?page=${pager.startNum-2}" class="btn btn-info">PRE</a>
+  </c:if>
+  
+  <c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
+  	<a href="${board}List?page=${i-1}" class="btn btn-info">${i}</a>
+  </c:forEach>
+  
+  <c:if test="${pager.next}">
+  	<a href="${board}List?page=${pager.lastNum}" class="btn btn-info">NEXT</a>
+  </c:if>  
+  
+  
+<%-- <c:if test="${page.hasPrevious()}">
+  	<a href="${board}List?page=${page.getNumber()-1}" class="btn btn-info">PRE</a>
+  </c:if>
+  
+  <span>${page.getNumber()+1} / ${page.getTotalPages()}</span>
+  
+  <c:if test="${page.hasNext()}">
+  	<a href="${board}List?page=${page.getNumber()+1}" class="btn btn-info">NEXT</a>
+  </c:if> --%>
+  
+  </div>
   
   <!-- Write 버튼 생성 클릭 -->
   <button id="btn">Write</button>		<!-- Form태그 내에서는 submit event가 실행 -->

@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.sub.sb6.util.Pager;
+
 @Controller
 @RequestMapping("/notice/**")
 public class NoticeController {
@@ -25,15 +27,18 @@ public class NoticeController {
 	}
 	
 	@GetMapping("noticeList")
-	public ModelAndView noticeList(Pageable pageable) throws Exception{
+	public ModelAndView noticeList(Pager pager) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		
 //		Pageable pageable = PageRequest.of(0, 10);
-		
-//		Pageable pageable = PageRequest.of(0, 10, Sort.Direction.DESC, "num");
+//		Pageable pageable = PageRequest.of(curPage, perPage, 정렬방향, 정렬할 컬럼명)
+		Pageable pageable = PageRequest.of(pager.getPage(), pager.getSize());
 		Page<NoticeVO> page = noticeService.noticeList(pageable);
+		
+		pager.makePage(page);
 		mv.setViewName("board/boardList");
 		mv.addObject("page", page);
+		mv.addObject("pager", pager);
 		return mv;
 	}
 	

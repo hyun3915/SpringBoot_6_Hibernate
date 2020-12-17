@@ -12,7 +12,7 @@ public class NoticeService {
 	private NoticeRepository noticeRepository;
 	
 	public Page<NoticeVO> noticeList(Pageable pageable) throws Exception{
-		return noticeRepository.findAll(pageable);
+		return noticeRepository.findByNumGreaterThanAndTitleContainingOrderByNumDesc(0L,"", pageable);
 	}
 	
 	public NoticeVO noticeSelect() {

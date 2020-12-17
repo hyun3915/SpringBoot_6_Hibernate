@@ -23,7 +23,31 @@ class NoticeRepositoryTest {
 	
 	@Test
 	void test() throws Exception{
-		this.saveTest2();
+		jpqlTest4();
+		jpqlTest1();
+	}
+	
+	private void jpqlTest1() {
+		NoticeVO noticeVO = noticeRepository.getSelect(100L);
+		System.out.println(noticeVO.getTitle());
+		System.out.println(noticeVO.getContents());
+	}
+	
+	private void jpqlTest2() {
+		String [] obj = noticeRepository.getSelect2(99L);
+		for(Object o: obj) {
+			System.out.println(o);
+		}
+	}
+	
+	private void jpqlTest3() {
+		noticeRepository.setUpdate1("update title", 100L);
+		System.out.println("finish");
+	}
+	
+	private void jpqlTest4() {
+		noticeRepository.setUpdate2("Mod Title", 100L);
+		System.out.println("finish");
 	}
 	
 	private void saveTest2() {
